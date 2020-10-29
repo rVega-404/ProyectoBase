@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:onClick="AnadirInsumo"
     tools:context=".Insumos_act">
 
     <LinearLayout
@@ -21,7 +22,7 @@
             android:id="@+id/btnAnadir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="AnadirInsumos"
+            android:onClick="AnadirInsumo"
             android:text="Añadir" />
 
         <Button

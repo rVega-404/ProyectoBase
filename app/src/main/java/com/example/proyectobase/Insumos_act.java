@@ -25,7 +25,7 @@ public class Insumos_act extends AppCompatActivity {
         eTxtStock = (EditText)findViewById(R.id.eTxtStock);
     }
 
-    public void AnadirInsumos(View view) {
+    public void AnadirInsumo(View view) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"fichero", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
 
@@ -59,9 +59,8 @@ public class Insumos_act extends AppCompatActivity {
         String codigo = eTxtCodigo.getText().toString();
 
         if(!codigo.isEmpty()) {
-            // Muestro insumos.
-            Cursor fila = db.rawQuery("SELECT nombre, precio, stock FROM insumos WHERE codigo=" + codigo, null); // Obtengo la fila donde codigo = codigo
-            if(fila.moveToFirst()) { // Si no hay campos devuelve vacio.
+            Cursor fila = db.rawQuery("SELECT nombre, precio, stock FROM insumos WHERE codigo=" + codigo, null);
+            if(fila.moveToFirst()) {
                 eTxtNombre.setText(fila.getString(0));
                 eTxtPrecio.setText(fila.getString(1));
                 eTxtStock.setText(fila.getString(2));
@@ -101,7 +100,6 @@ public class Insumos_act extends AppCompatActivity {
         cont.put("stock", eTxtStock.getText().toString());
 
         if(!codigo.isEmpty()) {
-            // Actualizamos.
             db.update("insumos", cont, "codigo=" + codigo, null);
             db.close();
             Toast.makeText(this, "Has actualizado el insumo", Toast.LENGTH_LONG).show();
